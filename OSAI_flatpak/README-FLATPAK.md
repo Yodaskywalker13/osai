@@ -43,12 +43,37 @@ chmod +x build-flatpak.sh
 ./build-flatpak.sh
 ```
 
-O script instala o runtime org.freedesktop 26.08 (só na primeira vez), compila
-tudo (Python + dependencias do `requirements.txt` vão para /app via pip), executa
+O script instala o runtime org.freedesktop 26.08 (apenas na primeira vez), compila
+tudo (Python + dependencias via **wheels offline** em `wheels/`), executa
 `flatpak install --user` e gera o bundle distribuivel:
 
 ```
 osai-os-1.0.0-x86_64.flatpak
+```
+
+### Build sem instalar flatpak-builder (Builder app, sem sudo)
+
+Se só o `flatpak` estiver instalado, o **org.flatpak.Builder** faz o papel do
+flatpak-builder (requer runtime/sdk 26.08 no escopo *system* — o Builder ponteia
+a busca de deps ao escopo system do host):
+
+```bash
+flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak install --user flathub org.flatpak.Builder
+flatpak install --system flathub org.freedesktop.Sdk//26.08 org.freedesktop.Platform//26.08
+flatpak run --command=flatpak-builder org.flatpak.Builder --user --repo=repo \
+    --force-clean --state-dir=.flatpak-builder build os.osai.OS.json
+flatpak build-bundle repo osai-os-1.0.0-x86_64.flatpak os.osai.OS stable
+```
+
+### Wheels offline
+
+O sandbox do Builder não tem rede; as dependências (pins do `requirements.txt`)
+são pré-baixadas em `OSAI_flatpak/wheels/`. Para atualizar/gerar para a versão
+do Python do runtime (26.08 = Python 3.14):
+
+```bash
+pip download --python-version 3.14 --only-binary=:all: -r requirements.txt -d OSAI_flatpak/wheels
 ```
 
 ### Distribuir
