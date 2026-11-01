@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ThemeOsai" parent="@android:style/Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="android:colorPrimary">#6366f1</item>
+        <item name="android:colorAccent">#818cf8</item>
+        <item name="android:statusBarColor">#05070f</item>
+        <item name="android:navigationBarColor">#05070f</item>
+    </style>
+</resources>

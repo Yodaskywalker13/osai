@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=OSAI OS
+Comment=Painel de Automação e IA Residencial (com servidor local para TV Box)
+Comment[pt_BR]=Painel de Automação e IA Residencial (com servidor local para TV Box)
+Exec=osai-os
+Icon=os.osai.OS
+Terminal=false
+Categories=Network;Utility;Development;
+StartupWMClass=os.osai.OS
+StartupNotify=true
+Keywords=IA;IA residencial;automação;ollama;smart home;LLM;assistente;

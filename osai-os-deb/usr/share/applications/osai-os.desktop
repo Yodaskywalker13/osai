@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=OSAI OS
+Comment=Painel de Automação e IA Residencial
+Exec=/usr/bin/osai-os
+Icon=utilities-terminal
+Terminal=false
+Type=Application
+Categories=Utility;Development;

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OSAI OS TV</string>
+    <string name="server_title">Servidor OSAI OS</string>
+    <string name="server_message">Endereço do servidor do OSAI OS (IP/porta do PC ou container que roda o FastAPI).\nA tela de TV será aberta em /tv.</string>
+    <string name="save">Salvar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="exit">Sair</string>
+    <string name="press_back_again">Pressione VOLTAR novamente para sair</string>
+</resources>

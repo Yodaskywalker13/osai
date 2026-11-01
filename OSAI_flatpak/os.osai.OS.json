@@ -1,0 +1,76 @@
+{
+    "id": "os.osai.OS",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "24.08",
+    "sdk": "org.freedesktop.Sdk",
+    "branch": "stable",
+    "command": "osai-os",
+    "separate-locales": false,
+    "finish-args": [
+        "--share=network",
+        "--share=ipc",
+        "--socket=fallback-x11",
+        "--socket=x11",
+        "--socket=wayland",
+        "--device=dri",
+        "--env=OLLAMA_HOST=http://127.0.0.1:11434",
+        "--env=OSAI_PORT=8000",
+        "--env=PYTHONUNBUFFERED=1"
+    ],
+    "cleanup": [
+        "/share/osai/__pycache__",
+        "*.whl",
+        "*.tar.gz"
+    ],
+    "modules": [
+        {
+            "name": "python-deps",
+            "only-arches": ["x86_64"],
+            "buildsystem": "simple",
+            "build-commands": [
+                "python3 -m pip install --no-cache-dir --prefix=${FLATPAK_DEST} -r requirements.txt",
+                "find ${FLATPAK_DEST}/lib/python3* -maxdepth 3 -type d \\( -name 'tests' -o -name 'test' \\) -exec rm -rf {} +",
+                "rm -rf ${FLATPAK_DEST}/share/doc ${FLATPAK_DEST}/share/man"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "src/requirements.txt"
+                }
+            ]
+        },
+        {
+            "name": "osai-core",
+            "only-arches": ["x86_64"],
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -Dm755 app/osai-os-launcher.sh /app/bin/osai-os",
+                "install -Dm644 src/OSAI_tvbox.py /app/share/osai/OSAI_tvbox.py",
+                "install -Dm644 src/osai_main.py /app/share/osai/osai_main.py",
+                "install -Dm644 src/requirements.txt /app/share/osai/requirements.txt",
+                "install -Dm644 app/os.osai.OS.desktop /app/share/applications/os.osai.OS.desktop",
+                "install -Dm644 app/os.osai.OS.metainfo.xml /app/share/metainfo/os.osai.OS.metainfo.xml",
+                "install -Dm644 app/icons/hicolor/64/os.osai.OS.png ${FLATPAK_DEST}/share/icons/hicolor/64x64/apps/os.osai.OS.png",
+                "install -Dm644 app/icons/hicolor/128/os.osai.OS.png ${FLATPAK_DEST}/share/icons/hicolor/128x128/apps/os.osai.OS.png",
+                "install -Dm644 app/icons/hicolor/256/os.osai.OS.png ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/os.osai.OS.png",
+                "install -Dm644 app/icons/hicolor/512/os.osai.OS.png ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/os.osai.OS.png",
+                "install -Dm644 app/icons/hicolor/128/os.osai.OS.png ${FLATPAK_DEST}/share/app-info/icons/flatpak/128x128/os.osai.OS.png",
+                "install -Dm644 app/icons/hicolor/128/os.osai.OS.png ${FLATPAK_DEST}/share/app-info/icons/flatpak/128x128/os.osai.OS-Scaled.png",
+                "desktop-file-validate app/os.osai.OS.desktop || true",
+                "rm -rf /app/share/osai/__pycache__"
+            ],
+            "sources": [
+                {
+                    "type": "dir",
+                    "path": "src",
+                    "skip": ["__pycache__"]
+                },
+                {
+                    "type": "dir",
+                    "path": "app",
+                    "skip": ["__pycache__"]
+                }
+            ]
+        }
+    ]
+}

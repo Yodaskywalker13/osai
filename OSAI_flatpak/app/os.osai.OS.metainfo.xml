@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>os.osai.OS</id>
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+  <name>OSAI OS</name>
+  <summary>Central residencial de automação e assistente de IA local</summary>
+  <description>
+    <p>
+      OSAI OS é a central do seu lar inteligente: painel de controle de cômodos
+      e dispositivos, assistente de IA (LLM local via Ollama) e buscas na web
+      com resposta em português. A mesma instância serve a interface 10-foot
+      para Android TV em http://SEU-IP:8000/tv, controlável pelo controle remoto.
+    </p>
+    <p>The control panel for your smart home: room/device dashboard, local AI
+    assistant (Ollama LLM) and Portuguese web search. The same instance serves a
+    Android TV interface at http://YOUR-IP:8000/tv, fully remote controlled.</p>
+    <p em="informational">
+      Requer Ollama rodando no host (127.0.0.1:11434) ou acessível na rede.
+      Sobrescreva com: flatpak override --user --env=OLLAMA_HOST=URL os.osai.OS
+    </p>
+  </description>
+  <developer translatable="no">Álvaro</developer>
+  <launchable type="desktop-id">os.osai.OS.desktop</launchable>
+  <categories>
+    <category>Network</category>
+    <category>Utility</category>
+  </categories>
+  <branding>
+    <color type="primary" scheme_preference="dark">#0d1424</color>
+    <color type="accent" scheme_preference="dark">#6366f1</color>
+  </branding>
+  <releases>
+    <release version="1.0.0" date="2026-10-31" type="stable">
+      <description>
+        <p>Primeira versão empacotada para Flatpak, com dashboard desktop e
+        interface de TV Box (/tv).</p>
+      </description>
+    </release>
+  </releases>
+  <content_rating type="oars-1.1">
+    <content_attribute id="violence-cartoon">none</content_attribute>
+    <content_attribute id="violence-fantasy">none</content_attribute>
+    <content_attribute id="violence-realistic">none</content_attribute>
+    <content_attribute id="violence-bloodshed">none</content_attribute>
+    <content_attribute id="violence-sexual">none</content_attribute>
+    <content_attribute id="violence-desecration">none</content_attribute>
+    <content_attribute id="violence-slavery">none</content_attribute>
+    <content_attribute id="violence-worship">none</content_attribute>
+    <content_attribute id="drugs-alcohol">none</content_attribute>
+    <content_attribute id="drugs-narcotics">none</content_attribute>
+    <content_attribute id="drugs-tobacco">none</content_attribute>
+    <content_attribute id="sex-nudity">none</content_attribute>
+    <content_attribute id="sex-themes">none</content_attribute>
+    <content_attribute id="sex-homosexuality">none</content_attribute>
+    <content_attribute id="sex-prostitution">none</content_attribute>
+    <content_attribute id="sex-adultery">none</content_attribute>
+    <content_attribute id="sex-appearance">none</content_attribute>
+    <content_attribute id="language-profanity">none</content_attribute>
+    <content_attribute id="language-humor">none</content_attribute>
+    <content_attribute id="language-discrimination">none</content_attribute>
+    <content_attribute id="social-chat">none</content_attribute>
+    <content_attribute id="social-info">none</content_attribute>
+    <content_attribute id="social-audio">none</content_attribute>
+    <content_attribute id="social-location">none</content_attribute>
+    <content_attribute id="social-contacts">none</content_attribute>
+    <content_attribute id="money-purchasing">none</content_attribute>
+    <content_attribute id="money-gambling">none</content_attribute>
+  </content_rating>
+  <recommends>
+    <display>1920x1080</display>
+    <control>pointing</control>
+    <control>keyboard</control>
+  </recommends>
+  <url type="homepage">https://osai.local</url>
+</component>
