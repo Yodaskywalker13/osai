@@ -15,8 +15,8 @@ command -v flatpak-builder >/dev/null 2>&1 || {
 
 echo "[1/5] Instalando runtime/sdk do Flathub (apenas na primeira vez)"
 flatpak install -y --or-update --system flathub \
-    "org.freedesktop.Platform//24.08" \
-    "org.freedesktop.Sdk//24.08"
+    "org.freedesktop.Platform//26.08" \
+    "org.freedesktop.Sdk//26.08"
 
 echo "[2/5] Limpando build anterior"
 rm -rf build repo
@@ -40,4 +40,4 @@ echo
 echo "Pronto! Opcoes para usar/distribuir:"
 echo "  Executar:   flatpak run ${APP_ID}"
 echo "  Instalar do bundle em outra maquina: flatpak install --user ./osai-os-${VERSION}-x86_64.flatpak"
-echo "  (na outra maquina e preciso ter o runtime: flatpak install flathub org.freedesktop.Platform//24.08)"
+echo "  (na outra maquina e preciso ter o runtime: flatpak install flathub org.freedesktop.Platform//26.08)"

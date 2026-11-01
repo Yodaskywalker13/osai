@@ -43,7 +43,7 @@ chmod +x build-flatpak.sh
 ./build-flatpak.sh
 ```
 
-O script instala o runtime org.freedesktop 24.08 (só na primeira vez), compila
+O script instala o runtime org.freedesktop 26.08 (só na primeira vez), compila
 tudo (Python + dependencias do `requirements.txt` vão para /app via pip), executa
 `flatpak install --user` e gera o bundle distribuivel:
 
@@ -56,7 +56,7 @@ osai-os-1.0.0-x86_64.flatpak
 Em outra maquina (com o runtime presente):
 
 ```bash
-flatpak install flathub org.freedesktop.Platform//24.08
+flatpak install flathub org.freedesktop.Platform//26.08
 flatpak install --user ./osai-os-1.0.0-x86_64.flatpak
 flatpak run os.osai.OS
 ```
